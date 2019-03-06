@@ -1,0 +1,10 @@
+# Default values for chart
+
+service:
+  type: LoadBalancer
+  port: 80
+
+deploy:
+  name: clippyfunc
+  imageTag: "latest"
+  containerPort: 80
