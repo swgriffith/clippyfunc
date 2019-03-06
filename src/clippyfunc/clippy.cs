@@ -29,19 +29,19 @@ namespace clippyfunc
                 .AddEnvironmentVariables()
                 .Build();
 
-            string sentimentURL = config["sentimentURL"];
+            //string sentimentURL = config["sentimentURL"];
 
 
-            HttpClient client = new HttpClient();
-            HttpContent content = new StringContent("{ \"documents\": [ { \"language\": \"en\", \"id\": \"1\", \"text\": \"" + text + "\" }]}",
-                                     Encoding.UTF8, 
-                                    "application/json");
+            //HttpClient client = new HttpClient();
+            //HttpContent content = new StringContent("{ \"documents\": [ { \"language\": \"en\", \"id\": \"1\", \"text\": \"" + text + "\" }]}",
+            //                         Encoding.UTF8, 
+            //                        "application/json");
 
-            var response = await client.PostAsync(sentimentURL, content);
-            var responseString = await response.Content.ReadAsStringAsync();
+            //var response = await client.PostAsync(sentimentURL, content);
+            //var responseString = await response.Content.ReadAsStringAsync();
 
-            sentimentDetail sentimentDetail = JsonConvert.DeserializeObject<sentimentDetail>(responseString);
-            text = text + " Sentiment Score: " + sentimentDetail.documents[0].score;
+            //sentimentDetail sentimentDetail = JsonConvert.DeserializeObject<sentimentDetail>(responseString);
+            //text = text + " Sentiment Score: " + sentimentDetail.documents[0].score;
                 
             string top = "";
             string bottom= "";
@@ -50,9 +50,9 @@ namespace clippyfunc
                 top +="_";
                 bottom+="-";
             }
-            
-            string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n\n Sentiment Score: {sentimentDetail.documents[0].score}";
-            //string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
+
+            //string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n\n Sentiment Score: {sentimentDetail.documents[0].score}";
+            string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
             return output != null
                 ? (ActionResult)new OkObjectResult(output)
