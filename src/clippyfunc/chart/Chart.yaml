@@ -1,0 +1,7 @@
+name: clippyfunc
+home: https://github.com/swgriffith/clippyfunc
+version: 1.0
+description: web app for GBB Kubernetes Hackfest
+maintainers: 
+  - name: stevegriffith
+    email: steve.griffith@microsoft.com

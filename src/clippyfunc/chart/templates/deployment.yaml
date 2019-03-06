@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{.Values.deploy.name}}"
+spec:
+  selector:
+    matchLabels:
+      app: clippyfunc
+  template:
+    metadata:
+      labels:
+        app: clippyfunc
+    spec:
+      containers:
+        - image: "stevegriffith/clippyfunc:{{.Values.deploy.imageTag}}"
+          imagePullPolicy: Always
+          name: clippyfunc
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "1.0"
+            limits:
+              memory: "1024Mi"
+              cpu: "2.0"
+          env:
+          ports:
+          - containerPort: {{.Values.deploy.containerPort}}
+            protocol: TCP
+      restartPolicy: Always        
