@@ -55,6 +55,8 @@ namespace clippyfunc
             //string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n\n Sentiment Score: {sentimentDetail.documents[0].score}";
             string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
+            output += $"\n Host OS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
+            
             return output != null
                 ? (ActionResult)new OkObjectResult(output)
                 : new BadRequestObjectResult("Please pass a message in the request body");
