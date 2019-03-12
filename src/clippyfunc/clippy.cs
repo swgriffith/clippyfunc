@@ -37,7 +37,7 @@ namespace clippyfunc
                 bottom+="-";
             }
 
-            string output = $" {top}\n< Msg: {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
+            string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
             output += $"\n Host OS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
             
