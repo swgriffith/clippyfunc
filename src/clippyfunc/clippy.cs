@@ -28,21 +28,6 @@ namespace clippyfunc
             var config = new ConfigurationBuilder()
                 .AddEnvironmentVariables()
                 .Build();
-
-            //string sentimentURL = config["sentimentURL"];
-            //Test
-
-
-            //HttpClient client = new HttpClient();
-            //HttpContent content = new StringContent("{ \"documents\": [ { \"language\": \"en\", \"id\": \"1\", \"text\": \"" + text + "\" }]}",
-            //                         Encoding.UTF8, 
-            //                        "application/json");
-
-            //var response = await client.PostAsync(sentimentURL, content);
-            //var responseString = await response.Content.ReadAsStringAsync();
-
-            //sentimentDetail sentimentDetail = JsonConvert.DeserializeObject<sentimentDetail>(responseString);
-            //text = text + " Sentiment Score: " + sentimentDetail.documents[0].score;
                 
             string top = "";
             string bottom= "";
@@ -52,7 +37,6 @@ namespace clippyfunc
                 bottom+="-";
             }
 
-            //string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n\n Sentiment Score: {sentimentDetail.documents[0].score}";
             string output = $" {top}\n< Msg: {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
             output += $"\n Host OS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
@@ -68,16 +52,5 @@ namespace clippyfunc
             }
         }
 
-        public class sentimentDetail
-        {
-            public documents[] documents { get; set; }
-            public string[] errors { get; set; }
-        }
-
-        public class documents{
-            public string id { get; set; }
-            public string score { get; set; }
-
-        }
     }
 }
