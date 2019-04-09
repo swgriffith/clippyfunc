@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 
-//test
+
 namespace clippyfunc
 {
     public static class clippy
