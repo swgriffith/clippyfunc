@@ -40,7 +40,7 @@ namespace clippyfunc
 
             string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
-            output += $"\n Host OS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
+            output += $"\n Host: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
             
             return output != null
                 ? (ActionResult)new OkObjectResult(output)
