@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{.Values.deploy.name}}"
+spec:
+  selector:
+    matchLabels:
+      app: clippyfunc
+  template:
+    metadata:
+      labels:
+        app: clippyfunc
+    spec:
+      containers:
+        - name: clippyfunc
+          image: "stevegriffith/clippyfunc:{{.Values.deploy.imageTag}}"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: ".5"
+            limits:
+              memory: "1024Mi"
+              cpu: "2.0"
+          env:
+          ports:
+          - containerPort: {{.Values.deploy.containerPort}}
+            protocol: TCP
+          volumeMounts:
+          - name: akv-flexvol
+            mountPath: {{.Values.deploy.mountPath}}
+            readOnly: true
+      restartPolicy: Always      
+      volumes:
+      - name: akv-flexvol
+        flexVolume:
+          driver: "azure/kv"
+          secretRef:
+            name: kvcreds # [OPTIONAL] not required if using Pod Identity
+          options:
+            usepodidentity: "false" # [OPTIONAL] if not provided, will default to "false"
+            keyvaultname: {{.Values.deploy.keyvaultname}} # the name of the KeyVault
+            keyvaultobjectnames: {{.Values.deploy.keyvaultobjectnames}} # list of KeyVault object names (semi-colon separated)
+            keyvaultobjecttypes: {{.Values.deploy.keyvaultobjecttypes}} # list of KeyVault object types: secret, key or cert (semi-colon separated)
+            keyvaultobjectversions: {{.Values.deploy.keyvaultobjectversions}}  # [OPTIONAL] list of KeyVault object versions (semi-colon separated), will get latest if empty
+            resourcegroup: {{.Values.deploy.resourcegroup}}  # the resource group of the KeyVault
+            subscriptionid: {{.Values.deploy.subscriptionid}}  # the subscription ID of the KeyVault
+            tenantid: {{.Values.deploy.tenantid}}  # the tenant ID of the KeyVault
+  
