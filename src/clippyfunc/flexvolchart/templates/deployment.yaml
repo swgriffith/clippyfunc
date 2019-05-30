@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{.Values.deploy.name}}"
+  name: {{.Values.deploy.name}}
 spec:
   selector:
     matchLabels:
-      app: clippyfunc
+      app: {{.Values.deploy.name}}
   template:
     metadata:
       labels:
-        app: clippyfunc
+        app: {{.Values.deploy.name}}
     spec:
       containers:
-        - name: clippyfunc
+        - name: {{.Values.deploy.name}}
           image: "stevegriffith/clippyfunc:{{.Values.deploy.imageTag}}"
           imagePullPolicy: Always
           resources:
