@@ -6,7 +6,7 @@ service:
 
 deploy:
   name: clippyfunc
-  imageTag: "353"
+  imageTag: "latest"
   containerPort: 80
   mountPath: /kvmnt
   keyvaultname: "<INSERT KV NAME>" # the name of the KeyVault
