@@ -40,7 +40,7 @@ namespace clippyfunc
 
             string output = $" {top}\n< {text} >\n {bottom}\n \\\n  \\\n    __\n   /  \\\n   |  |\n   @  @\n   |  |\n   || |/\n   || ||\n   |\\_/|\n   \\___/ \n";
 
-            output += $"\nOS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n\n";
+            output += $"\nOS: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}\n";
 
             //Check if KeyVault is enabled, pull the setting and write to output
             if(Convert.ToBoolean(config["USE_KEYVAULT_FLEXVOL"]))

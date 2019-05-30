@@ -23,6 +23,10 @@ spec:
               memory: "1024Mi"
               cpu: "2.0"
           env:
+          - name: USE_KEYVAULT_FLEXVOL
+            value: "true"
+          - name: SECRET_PATH
+            value: "{{printf "%s/%s" .Values.deploy.mountPath .Values.deploy.keyvaultobjectnames}}"
           ports:
           - containerPort: {{.Values.deploy.containerPort}}
             protocol: TCP
