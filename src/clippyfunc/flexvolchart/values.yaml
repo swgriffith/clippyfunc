@@ -12,7 +12,7 @@ deploy:
   keyvaultname: "<INSERT KV NAME>" # the name of the KeyVault
   keyvaultobjectnames: MyKeyVaultSecret # list of KeyVault object names (semi-colon separated)
   keyvaultobjecttypes: secret # list of KeyVault object types: secret, key or cert (semi-colon separated)
-  keyvaultobjectversions: ""  # [OPTIONAL] list of KeyVault object versions (semi-colon separated), will get latest if empty
+  keyvaultobjectversions: "866e963fb8a844aa97e10690e3456b28"  # [OPTIONAL] list of KeyVault object versions (semi-colon separated), will get latest if empty
   resourcegroup: "<INSERT RESOURCE GROUP>"  # the resource group of the KeyVault
   subscriptionid: "<INSERT SUBSCRIPTION ID>"  # the subscription ID of the KeyVault
   tenantid: "<INSERT TENANT ID>"  # the
