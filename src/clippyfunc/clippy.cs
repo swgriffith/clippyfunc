@@ -47,7 +47,7 @@ namespace clippyfunc
             {
                 string secretPath = config["SECRET_PATH"];
                 var mySecretSetting = LoadKVSettings(secretPath);
-                output += $"\nSecret Value: {mySecretSetting}";
+                output += $"\nSecret Value: {mySecretSetting}\n";
             }
 
             return output != null
