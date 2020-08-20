@@ -43,7 +43,7 @@ stages:
         containerRegistry: 'Griffith ACR'
         repository: 'steelwire'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '$(workingDirectory)/Dockerfile'
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
