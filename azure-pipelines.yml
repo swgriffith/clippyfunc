@@ -38,6 +38,13 @@ stages:
           $(workingDirectory)/*.csproj
         arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'Griffith ACR'
+        repository: 'steelwire'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+
     - task: ArchiveFiles@2
       displayName: 'Archive files'
       inputs:
@@ -74,3 +81,16 @@ stages:
               appType: functionApp
               appName: $(functionAppName)
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+          
+          - task: HelmDeploy@0
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: 'Griffith Demo Subscription (62afe9fc-190b-4f18-95ac-e5426017d4c8)'
+              azureResourceGroup: 'EphSteelWire'
+              kubernetesCluster: 'steelwire'
+              useClusterAdmin: true
+              namespace: 'steelwire'
+              command: 'install'
+              chartType: 'FilePath'
+              chartPath: './src/clippyfunc/chart/'
+              releaseName: 'steelwire'
