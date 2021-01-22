@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
       - image: stevegriffith/clippyfunc
-        name: nginx
+        name: steelwire
         ports:
         - containerPort: 8080
