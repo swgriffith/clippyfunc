@@ -4,7 +4,7 @@ metadata:
   name: steelwire
 spec:
   ports:
-  - port: 80
+  - port: 8080
     protocol: TCP
     targetPort: 80
   selector:
