@@ -30,3 +30,5 @@ spec:
       containers:
       - image: stevegriffith/clippyfunc
         name: steelwire
+        ports:
+        - containerPort: 80
